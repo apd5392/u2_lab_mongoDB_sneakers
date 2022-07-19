@@ -71,31 +71,32 @@ Use the MongoDB lesson to solve for the following:
 1. Find all the Air Jordans that have the model number: **4363**.
 
 ```sh
-<--- solution goes here !--->
+db.products.find ( { model: '4363'})
 ```
 
 2. Find all shoes that are either **red** or **black**.
 
 ```sh
-<--- solution goes here !--->
+db.products.find( {$or: [{color: 'Red'}, {color: 'Black'}]})
+
 ```
 
 3. Insert **4 new** [Air Jordans](https://www.jordan.com/collection/) into our collection (you can just make up model #s and colors if you like):
 
 ```sh
-<--- solution goes here !--->
+db.products.insertMany([{ model: '1991', brand: 'Jordan', color: 'Infrared'}, { model: '1995', brand: 'Jordan', color: 'Dark Concord'}, { model: '1990', brand: 'Jordan', color: 'Black'}, { model: '1992', brand: 'Jordan', color: 'White'}])
 ```
 
 4. Update all **red** Jordans to **Maroon**:
 
 ```sh
-<--- solution goes here !--->
+db.products.updateMany( {color: 'Red'}, {$set: {color: 'Maroon'}})
 ```
 
 5. Delete all model **4281** Air Jordans.
 
 ```sh
-<--- solution goes here !--->
+db.products.deleteMany( { model: '4281'} )
 ```
 
 ## Bonus
@@ -115,7 +116,17 @@ Once you have a better representation of a product, apply the changes to every p
 Write your queries below:
 
 ```sh
-<--- solution goes here !--->
+db.products.insertOne( { model: '2022', brand: "General Assembly", color: "Red/White", sizes: [7,8,9,10,11], qty: 36} )
+
+db.products.updateMany ( {brand: 'Nike'}, {$set: {sizes: [7,8,9,10,11], qty: 36}})
+
+db.products.updateMany ( {brand: 'Jordan'}, {$set: {sizes: [7,8,9,10,11], qty: 36}})
+
+db.products.updateMany( {}, {$set: {sizes: [7,8,9,10,11,12,13], qty: 50}}) 
+
+
+
+
 ```
 
 ![Jordan](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F66.media.tumblr.com%2Fa46d189bb8c3489dd21537e8478f61c4%2Ftumblr_p44eax11pT1r2cri9o2_500.gifv&f=1&nofb=1)
